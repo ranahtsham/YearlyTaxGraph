@@ -43,13 +43,15 @@ const CustomCalendar: React.FC<CustomCalendarProps> = ({year, percentage}) => {
             {months.map((month, monthIndex) => (
                 <div key={monthIndex} className="month">
                     <h2 style={{ color: "#691f74" }}>{month}</h2>
-                    {daysArray
-                        .filter(dayObj => dayObj.month === month)
-                        .map((dayObj, dayIndex) => (
-                            <div key={dayIndex} className={`day ${dayObj.highlight ? 'highlight' : ''} ${dayObj.today ? 'today' : ''}`}>
-                                {dayObj.today ? 'today' : dayObj.day}
-                            </div>
-                        ))}
+                    <div className="week">
+                        {daysArray
+                            .filter(dayObj => dayObj.month === month)
+                            .map((dayObj, dayIndex) => (
+                                <div key={dayIndex} className={`day ${dayObj.highlight ? 'highlight' : ''} ${dayObj.today ? 'today' : ''}`}>
+                                    {dayObj.today ? 'today' : dayObj.day}
+                                </div>
+                            ))}
+                    </div>
                 </div>
             ))}
         </div>
