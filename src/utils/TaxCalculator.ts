@@ -10,10 +10,10 @@ export function calculateTaxPercentage(total: number, tax: number): number {
     return (tax / total) * 100;
 }
 
-export const getTotalDaysInYear = (year: number): number => {
+export const calculateHighlightedDays = (year: number, percentage:number): number => {
     const start = new Date(year, 0, 1);
     const end = new Date(year + 1, 0, 1);
-    const diff = end.getTime() - start.getTime();
-    return diff / (1000 * 60 * 60 * 24);
+    const days =  (end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24);
+    return Math.round((percentage / 100) * days);
 };
 

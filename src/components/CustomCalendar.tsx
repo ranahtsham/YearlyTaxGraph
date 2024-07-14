@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import {getTotalDaysInYear} from "../utils/TaxCalculator";
+import {calculateHighlightedDays} from "../utils/TaxCalculator";
 import './CustomCalendar.css';
 
 interface CustomCalendarProps {
@@ -14,11 +14,8 @@ const CustomCalendar: React.FC<CustomCalendarProps> = ({ year, percentage }) => 
         'September', 'October', 'November', 'December'
     ];
 
-    // Calculate total number of days in the year
-    const totalDays = useMemo(() => getTotalDaysInYear(year), [year]);
-
     // Calculate number of days to be highlighted
-    const highlightedDays = useMemo(() => Math.round((percentage / 100) * totalDays), [percentage, totalDays]);
+    const highlightedDays = useMemo(() => calculateHighlightedDays(year, percentage), [year, percentage]);
 
     // Generate days for the entire year
     const daysArray = useMemo(() => {

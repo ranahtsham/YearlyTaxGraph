@@ -5,8 +5,8 @@ import './TaxGraph.css';
 
 const TaxGraph: React.FC = () => {
     const currentYear = new Date().getFullYear();
-    const [total, setTotal] = useState<number>(106900);
-    const [tax, setTax] = useState<number>(6900);
+    const [total, setTotal] = useState<number>(365);
+    const [tax, setTax] = useState<number>(100);
     const [taxPercentage, setTaxPercentage] = useState<number>(0);
 
     useEffect(() => {
@@ -24,7 +24,6 @@ const TaxGraph: React.FC = () => {
                 <label>Tax Percentage: </label>
                 <p style={{fontWeight: 'bold'}}>{taxPercentage.toFixed(2)}%</p>
             </div>
-
 
             <CustomCalendar year={currentYear} percentage={taxPercentage}/>
         </div>
