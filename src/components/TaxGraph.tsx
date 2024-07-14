@@ -16,13 +16,21 @@ const TaxGraph: React.FC = () => {
 
     return (
         <div className="tax-graph">
-            <div className="tax-input-container">
-                <label>Income:</label>
-                <input type="number" value={total} onChange={(e) => setTotal(Number(e.target.value))}/>
-                <label>Tax:</label>
-                <input type="number" value={tax} onChange={(e) => setTax(Number(e.target.value))}/>
-                <label>Tax Percentage: </label>
-                <p style={{fontWeight: 'bold', color:'red'}}>{taxPercentage.toFixed(2)}%</p>
+            <div className="tax-info-container">
+                <div>
+                    <label>Income:</label>
+                    <input type="number" value={total} onChange={(e) => setTotal(Number(e.target.value))}/>
+                </div>
+
+                <div>
+                    <label>Tax:</label>
+                    <input type="number" value={tax} onChange={(e) => setTax(Number(e.target.value))}/>
+                </div>
+
+                <div className={"tax-percentage-container"}>
+                    <label>Tax Percentage: </label>
+                    <p style={{fontWeight: 'bold', color: 'red'}}>{taxPercentage.toFixed(2)}%</p>
+                </div>
             </div>
 
             <CustomCalendar year={currentYear} percentage={taxPercentage}/>
