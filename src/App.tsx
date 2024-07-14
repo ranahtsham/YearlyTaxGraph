@@ -4,10 +4,10 @@ import './App.css';
 
 function App() {
     return (
-        <>
-            <h1 style={{color: "#691f74"}}>Yearly Tax Graph</h1>
-            <TaxGraph />
-        </>
+        <div className={'app-container'}>
+            <h1 style={{color: "#691f74", textAlign: "center"}}>Yearly Tax Graph</h1>
+            <TaxGraph/>
+        </div>
     );
 }
 

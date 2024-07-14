@@ -3,3 +3,7 @@
     --max-content-width: 1200px;
     --markcp-box-shadow: color-mix(in srgb, rgb(0, 132, 255) 30%, transparent) 0 5px 10px 0, color-mix(in srgb, rgb(132, 193, 255) 15%, transparent) 0 6px 12px 6px;
 }
+
+.app-container{
+}
+
