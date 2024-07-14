@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/YearlyTaxGraph/static/css/main.0ad28442.css",
-    "main.js": "/YearlyTaxGraph/static/js/main.f815c909.js",
+    "main.css": "/YearlyTaxGraph/static/css/main.08e1473c.css",
+    "main.js": "/YearlyTaxGraph/static/js/main.7af5670b.js",
     "index.html": "/YearlyTaxGraph/index.html",
-    "main.0ad28442.css.map": "/YearlyTaxGraph/static/css/main.0ad28442.css.map",
-    "main.f815c909.js.map": "/YearlyTaxGraph/static/js/main.f815c909.js.map"
+    "main.08e1473c.css.map": "/YearlyTaxGraph/static/css/main.08e1473c.css.map",
+    "main.7af5670b.js.map": "/YearlyTaxGraph/static/js/main.7af5670b.js.map"
   },
   "entrypoints": [
-    "static/css/main.0ad28442.css",
-    "static/js/main.f815c909.js"
+    "static/css/main.08e1473c.css",
+    "static/js/main.7af5670b.js"
   ]
 }
