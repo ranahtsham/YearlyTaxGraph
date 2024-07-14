@@ -17,8 +17,10 @@
     background-color: #f0f0f0;
     border: 1px solid #ddd;
     text-align: center;
+    border-radius: 6px;
 }
 
 .day.highlight {
     background-color: rgb(255, 227, 227);
+    border: 1px solid rgb(246, 178, 178);
 }

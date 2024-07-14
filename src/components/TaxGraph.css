@@ -22,19 +22,7 @@
     padding: 10px;
     font-size: 1em;
     margin: 5px 0;
-    border: 2px solid #1e90ff;
+    border: 2px solid #691f74;
     border-radius: 4px;
 }
 
-.tax-input-container button {
-    padding: 10px 20px;
-    background-color: #1e90ff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.tax-input-container button:hover {
-    background-color: #1c86ee;
-}
