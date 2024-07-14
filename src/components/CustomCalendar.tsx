@@ -1,18 +1,20 @@
-import React, { useMemo } from 'react';
+import React, {useMemo} from 'react';
 import {calculateHighlightedDays} from "../utils/TaxCalculator";
 import './CustomCalendar.css';
+
+const months = [
+    'January', 'February', 'March', 'April',
+    'May', 'June', 'July', 'August',
+    'September', 'October', 'November', 'December'
+];
+
 
 interface CustomCalendarProps {
     year: number;
     percentage: number;
 }
 
-const CustomCalendar: React.FC<CustomCalendarProps> = ({ year, percentage }) => {
-    const months = [
-        'January', 'February', 'March', 'April',
-        'May', 'June', 'July', 'August',
-        'September', 'October', 'November', 'December'
-    ];
+const CustomCalendar: React.FC<CustomCalendarProps> = ({year, percentage}) => {
 
     // Calculate number of days to be highlighted
     const highlightedDays = useMemo(() => calculateHighlightedDays(year, percentage), [year, percentage]);
@@ -32,7 +34,7 @@ const CustomCalendar: React.FC<CustomCalendarProps> = ({ year, percentage }) => 
             }
         }
         return days;
-    }, [months, year, highlightedDays]);
+    }, [year, highlightedDays]);
 
     return (
         <div className="calendar-container">
