@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useMemo } from 'react';
+import {getTotalDaysInYear} from "../utils/TaxCalculator";
 import './CustomCalendar.css';
 
 interface CustomCalendarProps {
@@ -13,16 +14,41 @@ const CustomCalendar: React.FC<CustomCalendarProps> = ({ year, percentage }) => 
         'September', 'October', 'November', 'December'
     ];
 
+    // Calculate total number of days in the year
+    const totalDays = useMemo(() => getTotalDaysInYear(year), [year]);
+
+    // Calculate number of days to be highlighted
+    const highlightedDays = useMemo(() => Math.round((percentage / 100) * totalDays), [percentage, totalDays]);
+
+    // Generate days for the entire year
+    const daysArray = useMemo(() => {
+        const days: { month: string, day: number, highlight: boolean }[] = [];
+        let dayCounter = 0;
+        for (let monthIndex = 0; monthIndex < months.length; monthIndex++) {
+            const daysInMonth = new Date(year, monthIndex + 1, 0).getDate();
+            for (let day = 1; day <= daysInMonth; day++) {
+                dayCounter++;
+                days.push({
+                    month: months[monthIndex], day,
+                    highlight: dayCounter <= highlightedDays
+                });
+            }
+        }
+        return days;
+    }, [months, year, highlightedDays]);
+
     return (
         <div className="calendar-container">
-            {months.map((month, index) => (
-                <div key={index} className="month">
-                    <h2 style={{color: "#691f74"}}>{month}</h2>
-                    {Array.from({length: new Date(year, index + 1, 0).getDate()}, (_, day) => (
-                        <div key={day + 1} className="day">
-                            {day + 1}
-                        </div>
-                    ))}
+            {months.map((month, monthIndex) => (
+                <div key={monthIndex} className="month">
+                    <h2 style={{ color: "#691f74" }}>{month}</h2>
+                    {daysArray
+                        .filter(dayObj => dayObj.month === month)
+                        .map((dayObj, dayIndex) => (
+                            <div key={dayIndex} className={`day ${dayObj.highlight ? 'highlight' : ''}`}>
+                                {dayObj.day}
+                            </div>
+                        ))}
                 </div>
             ))}
         </div>
