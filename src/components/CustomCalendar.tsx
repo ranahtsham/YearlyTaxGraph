@@ -21,14 +21,16 @@ const CustomCalendar: React.FC<CustomCalendarProps> = ({year, percentage}) => {
 
     // Generate days for the entire year
     const daysArray = useMemo(() => {
-        const days: { month: string, day: number, highlight: boolean }[] = [];
+        const days: { month: string, day: number, today:boolean, highlight: boolean }[] = [];
+        const currentDate = new Date();
         let dayCounter = 0;
         for (let monthIndex = 0; monthIndex < months.length; monthIndex++) {
             const daysInMonth = new Date(year, monthIndex + 1, 0).getDate();
             for (let day = 1; day <= daysInMonth; day++) {
                 dayCounter++;
+                const isToday = currentDate.getMonth() === monthIndex && currentDate.getDate() === day;
                 days.push({
-                    month: months[monthIndex], day,
+                    month: months[monthIndex], day, today: isToday,
                     highlight: dayCounter <= highlightedDays
                 });
             }
@@ -44,8 +46,8 @@ const CustomCalendar: React.FC<CustomCalendarProps> = ({year, percentage}) => {
                     {daysArray
                         .filter(dayObj => dayObj.month === month)
                         .map((dayObj, dayIndex) => (
-                            <div key={dayIndex} className={`day ${dayObj.highlight ? 'highlight' : ''}`}>
-                                {dayObj.day}
+                            <div key={dayIndex} className={`day ${dayObj.highlight ? 'highlight' : ''} ${dayObj.today ? 'today' : ''}`}>
+                                {dayObj.today ? 'today' : dayObj.day}
                             </div>
                         ))}
                 </div>

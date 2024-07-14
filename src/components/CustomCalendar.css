@@ -24,3 +24,7 @@
     background-color: rgb(255, 227, 227);
     border: 1px solid rgb(246, 178, 178);
 }
+
+.day.today {
+    background-color: rgb(225, 239, 255);
+}
