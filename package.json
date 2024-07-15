@@ -11,6 +11,7 @@
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
+    "openai": "latest",
     "react": "latest",
     "react-calendar": "latest",
     "react-dom": "latest",
