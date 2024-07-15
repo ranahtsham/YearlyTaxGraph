@@ -76,19 +76,26 @@ const App: React.FC = () => {
     return (
         <div className="App">
             <h1>Invoice Data Extractor</h1>
-            <ImageUploader onImageUpload={handleImageUpload}/>
-            {imageSrc && (
+
+            {!imageSrc &&
+                <ImageUploader onImageUpload={handleImageUpload}/>
+            }
+
+            {imageSrc && !extractedText && (
                 <div className="image-container" id="image-container">
                     <img id="uploaded-image" src={imageSrc} alt="Uploaded"/>
                     <button onClick={handleExtractText}>Extract Text</button>
                 </div>
             )}
-            <textarea value={extractedText} readOnly rows={10} cols={50}/>
+
             {extractedText && (
-                <div>
-                    <button onClick={handleAIAnalysis}>Analyze with AI</button>
-                    {renderAnalysisGrid()}
-                </div>
+                <>
+                    <textarea value={extractedText} readOnly rows={10} cols={50}/>
+                    <div>
+                        <button onClick={handleAIAnalysis}>Analyze with AI</button>
+                        {renderAnalysisGrid()}
+                    </div>
+                </>
             )}
         </div>
     );
