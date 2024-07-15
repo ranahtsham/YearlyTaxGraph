@@ -27,15 +27,8 @@ const App: React.FC = () => {
     const handleExtractText = async () => {
         const imageElement = document.getElementById('uploaded-image') as HTMLImageElement;
         if (imageElement) {
-            const { text, canvas } = await extractTextFromImage(imageElement);
+            const { text} = await extractTextFromImage(imageElement);
             setExtractedText(text);
-
-            // Replace the image with the processed canvas
-            const container = document.getElementById('image-container');
-            if (container) {
-                container.innerHTML = ''; // Clear the container
-                container.appendChild(canvas); // Append the canvas
-            }
         } else {
             console.error('Image element not found');
         }

@@ -46,36 +46,35 @@ function matToCanvas(mat: any): HTMLCanvasElement {
     return canvas;
 }
 
-export async function extractTextFromImage(imageElement: HTMLImageElement): Promise<{ text: string, canvas: HTMLCanvasElement }> {
+export async function extractTextFromImage(imageElement: HTMLImageElement): Promise<{ text: string}> {
     let text = "";
-    let canvas: HTMLCanvasElement;
 
     if (!window.cv) {
         console.error('OpenCV.js not loaded');
-        return { text, canvas: document.createElement('canvas') };
+        return { text};
     }
 
-    const cv = window.cv;
-    const src = cv.imread(imageElement);
-    const gray = new cv.Mat();
-    cv.cvtColor(src, gray, cv.COLOR_RGBA2GRAY, 0);
-    const dst = new cv.Mat();
-    cv.adaptiveThreshold(gray, dst, 255, cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, 11, 2);
+    // const cv = window.cv;
+    // const src = cv.imread(imageElement);
+    // const gray = new cv.Mat();
+    // cv.cvtColor(src, gray, cv.COLOR_RGBA2GRAY, 0);
+    // const dst = new cv.Mat();
+    // cv.adaptiveThreshold(gray, dst, 255, cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, 11, 2);
 
-    canvas = matToCanvas(dst);
+    // const canvas = matToCanvas(dst);
 
     try {
-        const { data: { text: ocrText } } = await Tesseract.recognize(canvas, 'eng', {
-            logger: m => console.log(m)
-        });
+        const { data: { text: ocrText } } = await Tesseract.recognize(imageElement, 'eng',
+            {logger: m => console.log(m)}
+        );
         text = ocrText;
     } catch (error) {
         console.error('Tesseract.js error:', error);
     }
 
-    src.delete();
-    gray.delete();
-    dst.delete();
+    // src.delete();
+    // gray.delete();
+    // dst.delete();
 
-    return { text, canvas };
+    return { text };
 }
