@@ -3,7 +3,89 @@
     --max-content-width: 1200px;
     --markcp-box-shadow: color-mix(in srgb, rgb(0, 132, 255) 30%, transparent) 0 5px 10px 0, color-mix(in srgb, rgb(132, 193, 255) 15%, transparent) 0 6px 12px 6px;
 }
-
-.app-container{
+.App {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: #333;
+    max-width: var(--max-content-width);
+    margin: 0 auto;
+    padding: 20px;
 }
 
+.App h1 {
+    color: #0044cc;
+    margin-bottom: 20px;
+}
+
+.image-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.image-container img, .image-container canvas {
+    max-width: 100%; /* Adjusted to use full width of the container */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 600px; /* Limit height for better responsiveness */
+    margin-bottom: 20px; /* Spacing between image and button */
+}
+
+textarea {
+    width: 100%;
+    height: 300px;
+    resize: none;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 20px;
+    background-color: #f0f8ff;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #0044cc;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #003399;
+}
+
+/* ImageUploader Component */
+.file-upload {
+    margin-top: 20px;
+    border: 2px dashed #ccc;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.file-upload:hover {
+    background-color: #f0f0f0;
+}
+
+.file-upload input[type="file"] {
+    display: none; /* Hide the default file input */
+}
+
+.file-upload-label {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.file-upload-label:hover {
+    background-color: #f0f0f0;
+}

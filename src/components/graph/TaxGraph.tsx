@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import CustomCalendar from './CustomCalendar';
-import {calculateTaxPercentage} from '../../utils/TaxCalculator';
+import {calculateTaxPercentage} from '../../utils/taxCalculator';
 import './TaxGraph.css';
 
 const TaxGraph: React.FC = () => {

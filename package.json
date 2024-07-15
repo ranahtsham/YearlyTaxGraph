@@ -15,6 +15,7 @@
     "react-calendar": "latest",
     "react-dom": "latest",
     "react-scripts": "latest",
+    "tesseract.js": "latest",
     "typescript": "latest",
     "web-vitals": "latest"
   },
