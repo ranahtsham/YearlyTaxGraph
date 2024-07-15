@@ -27,24 +27,24 @@ export async function loadOpenCV(): Promise<void> {
     });
 }
 
-function matToCanvas(mat: any): HTMLCanvasElement {
-    const canvas = document.createElement('canvas');
-    canvas.width = mat.cols;
-    canvas.height = mat.rows;
-    const ctx = canvas.getContext('2d');
-
-    // Convert mat to RGBA if it is not already
-    if (mat.channels() === 1) {
-        const cv = window.cv;
-        const rgbaMat = new cv.Mat();
-        cv.cvtColor(mat, rgbaMat, cv.COLOR_GRAY2RGBA);
-        mat = rgbaMat;
-    }
-
-    const imgData = new ImageData(new Uint8ClampedArray(mat.data), mat.cols, mat.rows);
-    ctx?.putImageData(imgData, 0, 0);
-    return canvas;
-}
+// function matToCanvas(mat: any): HTMLCanvasElement {
+//     const canvas = document.createElement('canvas');
+//     canvas.width = mat.cols;
+//     canvas.height = mat.rows;
+//     const ctx = canvas.getContext('2d');
+//
+//     // Convert mat to RGBA if it is not already
+//     if (mat.channels() === 1) {
+//         const cv = window.cv;
+//         const rgbaMat = new cv.Mat();
+//         cv.cvtColor(mat, rgbaMat, cv.COLOR_GRAY2RGBA);
+//         mat = rgbaMat;
+//     }
+//
+//     const imgData = new ImageData(new Uint8ClampedArray(mat.data), mat.cols, mat.rows);
+//     ctx?.putImageData(imgData, 0, 0);
+//     return canvas;
+// }
 
 export async function extractTextFromImage(imageElement: HTMLImageElement): Promise<{ text: string}> {
     let text = "";
@@ -60,7 +60,6 @@ export async function extractTextFromImage(imageElement: HTMLImageElement): Prom
     // cv.cvtColor(src, gray, cv.COLOR_RGBA2GRAY, 0);
     // const dst = new cv.Mat();
     // cv.adaptiveThreshold(gray, dst, 255, cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, 11, 2);
-
     // const canvas = matToCanvas(dst);
 
     try {
