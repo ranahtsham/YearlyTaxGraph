@@ -1,5 +1,5 @@
 import React, {useMemo} from 'react';
-import {calculateHighlightedDays} from "../utils/TaxCalculator";
+import {calculateHighlightedDays} from "../../utils/TaxCalculator";
 import './CustomCalendar.css';
 
 const months = [
