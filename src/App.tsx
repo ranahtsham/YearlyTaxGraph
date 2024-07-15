@@ -38,6 +38,7 @@ const App: React.FC = () => {
 
     const handleAIAnalysis = async () => {
         if (extractedText) {
+            setAiAnalysis("{\"\": \"In-Progress\"}");
             try {
                 const analysisResult = await analyzeTextWithAI(extractedText);
                 setAiAnalysis(analysisResult);
