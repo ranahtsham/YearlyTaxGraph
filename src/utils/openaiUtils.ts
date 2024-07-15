@@ -14,6 +14,7 @@ const aiPrompt:string = `\n find these details and only return json:
 {
     "title": invoice business name or way to identify this, 
     "date": isodatetime,
+    "invoice": invoice number (if given),
     "gst": known as: GST or TPS (Goods and Services Tax) amount (if given),
     "pst": known as: PST or TVP or TVQ (Provincial Sales Tax) amount (if given),
     "hst": known as: HST or TVH or (gst + pst) (Harmonized Sales Tax) amount (if given),
