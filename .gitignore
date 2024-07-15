@@ -24,4 +24,3 @@ yarn-error.log*
 
 .idea
 .env
-/src/utils/openai.config.js

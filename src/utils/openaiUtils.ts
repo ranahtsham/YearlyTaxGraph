@@ -1,9 +1,16 @@
 import OpenAI from 'openai';
 import {OPENAI_API_KEY} from './openai.config';
 
-const openai = new OpenAI({ apiKey: `${OPENAI_API_KEY}`, dangerouslyAllowBrowser: true });
+let apiOpenAiKey:string | null = OPENAI_API_KEY;
+if (!apiOpenAiKey) {
+    apiOpenAiKey = prompt('Please enter your OpenAI API key:');
+    if (apiOpenAiKey) {
+        localStorage.setItem('OPENAI_API_KEY', apiOpenAiKey);
+    }
+}
 
-const prompt:string = `\n find these details and only return json:
+
+const aiPrompt:string = `\n find these details and only return json:
 {
     "title": invoice business name or way to identify this, 
     "date": isodatetime,
@@ -14,11 +21,12 @@ const prompt:string = `\n find these details and only return json:
     "total": total amount,
 }`
 
-
 export async function analyzeTextWithAI(text: string): Promise<any> {
+
+    const openai = new OpenAI({ apiKey: `${apiOpenAiKey}`, dangerouslyAllowBrowser: true });
     try {
         const completion = await openai.chat.completions.create({
-            messages: [{ role: 'system', content: `${text} \n ${prompt}` }],
+            messages: [{ role: 'system', content: `${text} \n ${aiPrompt}` }],
             response_format: { "type": "json_object" },
             model: 'gpt-3.5-turbo',
         });

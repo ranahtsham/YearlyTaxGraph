@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { loadOpenCV, extractTextFromImage } from './utils/opencvUtils';
+import React, {useEffect, useState} from 'react';
+import {extractTextFromImage, loadOpenCV} from './utils/opencvUtils';
 import ImageUploader from './components/ImageUploader';
-import './App.css';
 import { analyzeTextWithAI } from './utils/openaiUtils';
+import './App.css';
+
 
 const App: React.FC = () => {
     const [imageSrc, setImageSrc] = useState<string | null>(null);
@@ -13,7 +14,7 @@ const App: React.FC = () => {
         loadOpenCV()
             .then(() => console.log('OpenCV loaded'))
             .catch((error) => console.error('Failed to load OpenCV', error));
-    }, []);
+    }, [imageSrc]);
 
     const handleImageUpload = (imageFile: File) => {
         const reader = new FileReader();
