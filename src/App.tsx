@@ -29,6 +29,7 @@ const App: React.FC = () => {
     const handleExtractText = async () => {
         const imageElement = document.getElementById('uploaded-image') as HTMLImageElement;
         if (imageElement) {
+            setExtractedText("In-Progress...");
             const { text } = await extractTextFromImage(imageElement);
             setExtractedText(text);
             setAiAnalysis(null); // Reset previous AI analysis

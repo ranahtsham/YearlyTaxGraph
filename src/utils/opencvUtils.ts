@@ -64,7 +64,7 @@ export async function extractTextFromImage(imageElement: HTMLImageElement): Prom
 
     try {
         const { data: { text: ocrText } } = await Tesseract.recognize(imageElement, 'eng',
-            {logger: m => console.log(m)}
+            // {logger: m => console.log(m)}
         );
         text = ocrText;
     } catch (error) {
