@@ -38,6 +38,12 @@ const App: React.FC = () => {
         }
     };
 
+
+    const handleBackClick = async () => {
+        setExtractedText("");
+        setAiAnalysis(null);
+    };
+
     const handleAIAnalysis = async () => {
         if (extractedText) {
             setAiAnalysis("{\"\": \"In-Progress\"}");
@@ -95,10 +101,11 @@ const App: React.FC = () => {
                 <>
                     <textarea value={extractedText} readOnly rows={10} cols={50}/>
                     <div>
-                        { extractedText !== "In-Progress..." &&
+                        {extractedText !== "In-Progress..." &&
                             <button onClick={handleAIAnalysis}>Analyze with AI</button>}
                         {renderAnalysisGrid()}
                     </div>
+                    <button style={{backgroundColor:"black"}} onClick={handleBackClick}>BACK</button>
                 </>
             )}
         </div>
