@@ -10,7 +10,7 @@ if (!apiOpenAiKey) {
 }
 
 
-const aiPrompt:string = `\n find these details and only return json:
+const aiPrompt:string = `\n find these details if given and only return json:
 {
     "title": invoice business name or way to identify this, 
     "date": isodatetime,
