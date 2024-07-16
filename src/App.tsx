@@ -91,11 +91,15 @@ const App: React.FC = () => {
             <h1>Invoice Data Extractor</h1>
 
             {!imageSrc &&
-                <ImageUploader onImageUpload={handleImageUpload}/>
+                <>
+                    <h2> Upload Invoice </h2>
+                    <ImageUploader onImageUpload={handleImageUpload}/>
+                </>
             }
 
             {imageSrc && !extractedText && (
                 <div className="image-container" id="image-container">
+                    <h2> Invoice Preview </h2>
                     <img id="uploaded-image" src={imageSrc} alt="Uploaded"/>
                     <button onClick={handleExtractText}>Extract Text</button>
                 </div>
