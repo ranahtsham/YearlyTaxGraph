@@ -117,3 +117,11 @@ button:hover {
 .value {
     margin-top: 5px;
 }
+
+
+.back-end{
+    display: flex;
+    gap: 20px;
+
+    justify-content: flex-end;
+}

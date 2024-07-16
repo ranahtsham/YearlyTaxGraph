@@ -43,14 +43,22 @@ const App: React.FC = () => {
     };
 
     const handleBackClick = async () => {
+        if(aiAnalysis){
+            setAiAnalysis(null);
+            return;
+        }
+
+        if(extractedText){
+            setExtractedText("");
+            return;
+        }
+
         setImageSrc(null);
-        setExtractedText("");
-        setAiAnalysis(null);
     };
 
     const handleAIAnalysis = async () => {
         if (extractedText) {
-            setAiAnalysis("{\"\": \"In-Progress\"}");
+            setAiAnalysis("{\"\": \"In-Progress...\"}");
             try {
                 const analysisResult = await analyzeTextWithAI(extractedText);
                 setAiAnalysis(analysisResult);
@@ -101,7 +109,11 @@ const App: React.FC = () => {
                 <div className="image-container" id="image-container">
                     <h2> Invoice Preview </h2>
                     <img id="uploaded-image" src={imageSrc} alt="Uploaded"/>
-                    <button onClick={handleExtractText}>Extract Text</button>
+                    <div className={"back-end"}>
+                        <button onClick={handleExtractText}>Extract Text</button>
+                        <button style={{backgroundColor: "black"}} onClick={handleBackClick}>X</button>
+                    </div>
+
                 </div>
             )}
 
@@ -112,12 +124,19 @@ const App: React.FC = () => {
                             <h2> OCR Text </h2>
                             <textarea value={extractedText} readOnly rows={calculateRows(extractedText) + 1} cols={50}/>
                             {extractedText !== "In-Progress..." &&
-                                <button onClick={handleAIAnalysis}>Analyze with AI</button>}
+                                <div className={"back-end"}>
+                                    <button onClick={handleAIAnalysis}>Analyze with AI</button>
+                                    <button style={{backgroundColor: "black"}} onClick={handleBackClick}>BACK</button>
+                                </div>
+                            }
                         </>
                     }
                     {renderAnalysisGrid()}
-                    { imageSrc && extractedText && aiAnalysis &&
-                        <button style={{backgroundColor: "black"}} onClick={handleBackClick}>BACK</button>
+                    { imageSrc && extractedText && aiAnalysis && !aiAnalysis.includes("In-Progress...") &&
+                        <div className={"back-end"}>
+                            <button onClick={handleAIAnalysis}>Re-Analyze with AI</button>
+                            <button style={{backgroundColor: "black"}} onClick={handleBackClick}>BACK</button>
+                        </div>
                     }
                 </div>
             )}
