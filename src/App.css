@@ -3,6 +3,7 @@
     --max-content-width: 1200px;
     --markcp-box-shadow: color-mix(in srgb, rgb(0, 132, 255) 30%, transparent) 0 5px 10px 0, color-mix(in srgb, rgb(132, 193, 255) 15%, transparent) 0 6px 12px 6px;
 }
+
 .App {
     text-align: center;
     font-family: Arial, sans-serif;
@@ -32,13 +33,17 @@
     margin-bottom: 20px; /* Spacing between image and button */
 }
 
+.extracted-details {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Ensure it takes the available height */
+}
+
 textarea {
-    width: 100%;
-    height: 300px;
+    flex: 1;
     resize: none;
     border: 1px solid #ccc;
     padding: 10px;
-    font-size: 16px;
     margin-top: 20px;
     background-color: #f0f8ff;
 }

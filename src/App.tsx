@@ -38,8 +38,12 @@ const App: React.FC = () => {
         }
     };
 
+    const calculateRows = (text: string) => {
+        return text.split('\n').length;
+    };
 
     const handleBackClick = async () => {
+        setImageSrc(null);
         setExtractedText("");
         setAiAnalysis(null);
     };
@@ -98,15 +102,20 @@ const App: React.FC = () => {
             )}
 
             {extractedText && (
-                <>
-                    <textarea value={extractedText} readOnly rows={10} cols={50}/>
-                    <div>
-                        {extractedText !== "In-Progress..." &&
-                            <button onClick={handleAIAnalysis}>Analyze with AI</button>}
-                        {renderAnalysisGrid()}
-                    </div>
-                    <button style={{backgroundColor:"black"}} onClick={handleBackClick}>BACK</button>
-                </>
+                <div className="extracted-details">
+                    {imageSrc && extractedText && !aiAnalysis &&
+                        <>
+                            <h2> OCR Text </h2>
+                            <textarea value={extractedText} readOnly rows={calculateRows(extractedText) + 1} cols={50}/>
+                            {extractedText !== "In-Progress..." &&
+                                <button onClick={handleAIAnalysis}>Analyze with AI</button>}
+                        </>
+                    }
+                    {renderAnalysisGrid()}
+                    { imageSrc && extractedText && aiAnalysis &&
+                        <button style={{backgroundColor: "black"}} onClick={handleBackClick}>BACK</button>
+                    }
+                </div>
             )}
         </div>
     );
